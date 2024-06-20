@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Only 3D Flip Book Animation Example</title>
+
+
+    <style>
+        
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    font-family: 'Roboto', sans-serif;
+    align-items: center;
+    background: linear-gradient(90deg , #fff 50% , #fdbf00 50% );
+}
+
+input {
+    display: none;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+.book {
+    display: flex;
+}
+
+#cover {
+    width: 350px;
+    height: 620px;
+}
+
+.flip-book {
+    width: 350px;
+    height: 620px;
+    position: relative;
+    perspective: 1500px;
+}
+
+.flip {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: left;
+    transform-style: preserve-3d;
+    transform: rotateY(0deg);
+    transition: .5s;
+    color: #000;
+}
+
+p {
+    font-size: 14px;
+    line-height: 24px;
+}
+
+.front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    padding: 0 13px;
+    /* box-shadow: inset 20px 0 50px r; */
+}
+
+.back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    transform: rotateY(180deg);
+    backface-visibility: hidden;
+    background-color: #000;
+}
+
+.next-btn {
+    position: absolute;
+    bottom: 13px;
+    right: 13px;
+    cursor: pointer;
+    color: #e8ad40;
+}
+
+.back-btn {
+    position: absolute;
+    bottom: 13px;
+    right: 13px;
+    cursor: pointer;
+    color: #fff;
+}
+
+#p1 {
+    z-index: 3;
+}
+#p2 {
+    z-index: 2;
+}
+#p3 {
+    z-index: 1;
+}
+
+#c1:checked ~ .flip-book #p1 {
+    transform: rotateY(-180deg);
+    z-index: 1;
+}
+#c2:checked ~ .flip-book #p2 {
+    transform: rotateY(-180deg);
+    z-index: 2;
+}
+#c3:checked ~ .flip-book #p3 {
+    transform: rotateY(-180deg);
+    z-index: 3;
+}
+
+
+    </style>
+</head>
+
+
+<body>
+
+    <div class="book">
+        <input type="checkbox" id="c1">
+        <input type="checkbox" id="c2">
+        <input type="checkbox" id="c3">
+        <div id="cover">
+            <img src="../images/cardbd.png" alt="">
+        </div>
+        <div class="flip-book">
+            <div class="flip" id="p1">
+                <div class="back">
+                    <img src="../images/BirthdayForTH_nosign.png" alt="">
+
+                    <label  for="c1" class="back-btn">Before</label>
+                </div>
+                <div class="front">
+                    
+                    <img src="../images/bdcake.jpg" alt="">
+
+                    <label for="c1" class="next-btn">NEXT</label>
+                </div>
+            </div>
+
+            <div class="flip" id="p2">
+                <div class="back">
+                    <img src="../images/musicpage.png" alt="">
+                  
+                      
+
+                    <label for="c2" class="back-btn">Before</label>
+                </div>
+                <div class="front">
+                    <img src="../images/BDimage2.png" alt="">
+                    <label for="c2" class="next-btn">NEXT</label>
+                </div>
+            </div>
+            
+            <div class="flip" id="p3">
+                <div class="back">
+                    <img src="../images/theend.jpg">
+                    <label for="c3" class="back-btn">Before</label>
+                </div>
+                <div class="front">
+                    <h2>Music for life</h2>
+
+                    <audio controls autoplay>
+                        <source src="birthdaysong.mp3" type="audio/mpeg">
+                      </audio>
+                    <label for="c3" class="next-btn">NEXT</label>
+                </div>
+            </div>
+
+        </div>
+    </div>
+   <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46156385-1', 'cssscript.com');
+  ga('send', 'pageview');
+
+</script>
+</body>
+</html>
